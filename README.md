@@ -5,7 +5,7 @@
 **PHP_EXT_ENABLED**: Enable installed PHP extension.
 * Some PHP extension installed and enabled through PHP_EXT_ENABLED:
 ```Dockerfile
-ENV	PHP_EXT_ENABLED="OAuth apcu apfd bcmath bz2 calendar ctype curl dba dom enchant exif ftp gd geoip gettext gmp http iconv igbinary imagick imap intl json ldap mcrypt memcache memcached mongo msgpack mssql mysql mysqli odbc opcache openssl pcntl pdo pdo_dblib pdo_mysql pdo_odbc pdo_pgsql pdo_sqlite pgsql phar posix propro pspell raphf shmop snmp soap sockets sqlite3 sysvmsg sysvsem sysvshm xdebug xml xml_wddx xmlreader xmlrpc xsl zip zlib"
+ENV	PHP_EXT_ENABLED="oauth apcu apfd bcmath bz2 calendar ctype curl dba dom enchant exif ftp gd geoip gettext gmp http iconv igbinary imagick imap intl ldap mcrypt memcache memcached mongodb msgpack mssql mysql mysqli odbc opcache openssl pcntl pdo pdo_dblib pdo_mysql pdo_odbc pdo_pgsql pdo_sqlite pgsql phar posix propro pspell raphf shmop snmp sqlite3 sysvmsg sysvsem sysvshm xdebug xml wddx xmlreader xmlrpc xsl zip zlib"
 ```
 * To disabled extensions, remove the name in PHP_EXT_ENABLED *before* starting the container:
 ```
@@ -42,7 +42,7 @@ Use enviornment variables to control php-fpm/php-cli (defaults) :
 **Xdebug**: 
 * xdebug.ini is tuned for debuger running on docker host - 172.17.0.1
 * Change PHP_XDEBUG_HOST for remote debugging
-```
+```ini
 zend_extension="xdebug.so"
 xdebug.profiler_enable = On
 xdebug.remote_enable = On

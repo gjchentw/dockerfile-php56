@@ -1,22 +1,26 @@
 #!/bin/bash
 
 PHP_MAJOR_VERSION=$(php -r 'echo PHP_MAJOR_VERSION;')
+INI_DIR="/etc/php${PHP_MAJOR_VERSION}/mods-available"
+CONF_DIR="/etc/php${PHP_MAJOR_VERSION}/conf.d"
 
 for i in ${PHP_EXT_ENABLED}
 do
-  if [ -f /etc/php${PHP_MAJOR_VERSION}/mods-available/${i}.ini ]; then
+  INI_FILE=$(grep -il [\=\"\']${i}.so ${INI_DIR}/* | xargs basename)
+  
+  if [ -f ${INI_DIR}/${INI_FILE} ]; then
   case "$i" in
     opcache)
-      ln -s /etc/php${PHP_MAJOR_VERSION}/mods-available/opcache.ini /etc/php${PHP_MAJOR_VERSION}/conf.d/05-opcache.ini
+      ln -s ${INI_DIR}/${INI_FILE} ${CONF_DIR}/05-${INI_FILE}
       ;;
     pdo)
-      ln -s /etc/php${PHP_MAJOR_VERSION}/mods-available/pdo.ini /etc/php${PHP_MAJOR_VERSION}/conf.d/10-opcache.ini
+      ln -s ${INI_DIR}/${INI_FILE} ${CONF_DIR}/10-${INI_FILE}
       ;;
     http)
-      ln -s /etc/php${PHP_MAJOR_VERSION}/mods-available/http.ini /etc/php${PHP_MAJOR_VERSION}/conf.d/30-http.ini
+      ln -s ${INI_DIR}/${INI_FILE} ${CONF_DIR}/30-${INI_FILE}
       ;;
     *)
-      ln -s /etc/php${PHP_MAJOR_VERSION}/mods-available/${i}.ini /etc/php${PHP_MAJOR_VERSION}/conf.d/20-${i}.ini
+      ln -s ${INI_DIR}/${INI_FILE} ${CONF_DIR}/20-${INI_FILE}
       ;;
   esac
   fi
