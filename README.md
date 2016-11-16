@@ -9,7 +9,7 @@ ENV	PHP_EXT_ENABLED="oauth apcu apfd bcmath bz2 calendar ctype curl dba dom ench
 ```
 * To disabled extensions, remove the name in PHP_EXT_ENABLED *before* starting the container:
 ```
-docker run -d -e PHP_EXT_ENABLED="enabled extensions name" -p 80:80 gjchen.php56
+docker run -d -e PHP_EXT_ENABLED="enabled extensions name" -p 80:80 gjchen/php56
 ```
 
 Use enviornment variables to control php-fpm/php-cli (defaults) :
