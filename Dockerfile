@@ -176,7 +176,7 @@ RUN	echo xdebug.profiler_enable = On >> /etc/php5/mods-available/xdebug.ini && \
 	echo xdebug.remote_port = 9000 >> /etc/php5/mods-available/xdebug.ini && \
 	echo xdebug.remote_handler = "dbgp" >> /etc/php5/mods-available/xdebug.ini
 
-ENV	PHP_EXT_ENABLED="oauth apcu apfd bcmath bz2 calendar ctype curl dba dom enchant exif ftp gd geoip gettext gmp http iconv igbinary imagick imap intl ldap mcrypt memcache memcached mongodb msgpack mssql mysql mysqli odbc opcache openssl pcntl pdo pdo_dblib pdo_mysql pdo_odbc pdo_pgsql pdo_sqlite pgsql phar posix propro pspell raphf shmop snmp sqlite3 sysvmsg sysvsem sysvshm xdebug xml wddx xmlreader xmlrpc xsl zip zlib"
+ENV	PHP_EXT_ENABLED="apcu apfd bcmath bz2 calendar ctype curl dba dom enchant exif ftp gd geoip gettext gmp http iconv igbinary imagick imap intl json ldap mcrypt memcache memcached mongodb msgpack mssql mysql mysqli oauth odbc opcache openssl pcntl pdo pdo_dblib pdo_mysql pdo_odbc pdo_pgsql pdo_sqlite pgsql phar posix propro pspell raphf shmop snmp soap sockets sqlite3 sysvmsg sysvsem sysvshm wddx xdebug xml xmlreader xmlrpc xsl zip zlib"
 
 ADD	nginx_default_server.conf /etc/nginx/conf.d/default.conf
 ADD	php-fpm-www.conf /etc/php5/
