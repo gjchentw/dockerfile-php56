@@ -6,7 +6,7 @@ ENV	PHP_LOG_ERRORS=1
 ENV	PHP_DISPLAY_ERRORS=1
 ENV	PHP_ERROR_REPORTING=-1
 ENV	PHP_TIMEZONE="Asia/Taipei"
-ENV	PHP_OPEN_SHORT_TAG=0
+ENV	PHP_SHORT_OPEN_TAG=0
 ENV	PHP_MAX_EXECUTION_TIME=30
 ENV	PHP_MAX_INPUT_TIME=60
 ENV	PHP_MEMORY_LIMIT=128M
@@ -177,7 +177,6 @@ RUN	echo xdebug.profiler_enable = On >> /etc/php5/mods-available/xdebug.ini && \
 	echo xdebug.remote_handler = "dbgp" >> /etc/php5/mods-available/xdebug.ini
 
 ENV	PHP_EXT_ENABLED="apcu apfd bcmath bz2 calendar ctype curl dba dom enchant exif ftp gd geoip gettext gmp http iconv igbinary imagick imap intl json ldap mcrypt memcache memcached mongodb msgpack mssql mysql mysqli oauth odbc opcache openssl pcntl pdo pdo_dblib pdo_mysql pdo_odbc pdo_pgsql pdo_sqlite pgsql phar posix propro pspell raphf shmop snmp soap sockets sqlite3 sysvmsg sysvsem sysvshm wddx xdebug xml xmlreader xmlrpc xsl zip zlib"
-
 ADD	nginx_default_server.conf /etc/nginx/conf.d/default.conf
 ADD	php-fpm-www.conf /etc/php5/
 ADD	php-fpm.sh /usr/local/bin
