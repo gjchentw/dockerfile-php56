@@ -176,6 +176,7 @@ RUN	echo xdebug.profiler_enable = On >> /etc/php5/mods-available/xdebug.ini && \
 	echo xdebug.remote_port = 9000 >> /etc/php5/mods-available/xdebug.ini && \
 	echo xdebug.remote_handler = "dbgp" >> /etc/php5/mods-available/xdebug.ini
 
+ENV	POSTFIX_ENABLED=0
 ENV	PHP_EXT_ENABLED="apcu apfd bcmath bz2 calendar ctype curl dba dom enchant exif ftp gd geoip gettext gmp http iconv igbinary imagick imap intl json ldap mcrypt memcache memcached mongodb msgpack mssql mysql mysqli oauth odbc opcache openssl pcntl pdo pdo_dblib pdo_mysql pdo_odbc pdo_pgsql pdo_sqlite pgsql phar posix propro pspell raphf shmop snmp soap sockets sqlite3 sysvmsg sysvsem sysvshm wddx xdebug xml xmlreader xmlrpc xsl zip zlib"
 ADD	nginx_default_server.conf /etc/nginx/conf.d/default.conf
 ADD	php-fpm-www.conf /etc/php5/
@@ -187,4 +188,4 @@ RUN	echo 'pid /var/run/nginx.pid;' > /etc/nginx/modules/pid.conf && \
 
 VOLUME	["/app"]
 
-CMD	rsyslogd; crond -b; postfix start; php-fpm.sh; nginx -g "daemon off;";
+CMD	rsyslogd; crond -b; test 0${POSTFIX_ENABLED} -ne 0 && postfix start; php-fpm.sh; nginx -g "daemon off;";

@@ -12,6 +12,12 @@ ENV	PHP_EXT_ENABLED="oauth apcu apfd bcmath bz2 calendar ctype curl dba dom ench
 docker run -d -e PHP_EXT_ENABLED="enabled extensions name" -p 80:80 gjchen/php56
 ```
 
+**POSTFIX_ENABLED=0**: postfix is disabled by default
+To enable postfix to let sendmail work:
+```
+docker run -d -e POSTFIX_ENABLED=1 -p 80:80 gjchen/php56
+```
+
 Use enviornment variables to control php-fpm/php-cli (defaults) :
 *  PHP_ERROR_LOG=syslog
 *  PHP_LOG_ERRORS=1
@@ -50,3 +56,4 @@ xdebug.remote_port = 9000
 xdebug.remote_handler = dbgp
 xdebug.remote_host = ${PHP_XDEBUG_HOST}
 ```  
+
