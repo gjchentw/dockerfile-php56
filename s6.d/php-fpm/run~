@@ -1,0 +1,7 @@
+#!/bin/bash
+[[ -f ./setup ]] && source ./setup
+
+pushd /root > /dev/null
+    PHP_MAJOR_VERSION=$(/usr/bin/php -r 'echo PHP_MAJOR_VERSION;')
+    exec su-exec root php-fpm${PHP_MAJOR_VERSION} -y /etc/php${PHP_MAJOR_VERSION}/php-fpm-www.conf -F
+popd
