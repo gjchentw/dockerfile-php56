@@ -2,4 +2,4 @@
 **Alpine Linux** with *nginx* and *php5-fpm* configured.
 * Base docker image: https://hub.docker.com/r/gjchen/alpine/
 
-TBD
+Minimal setup, insatll extra extensions by cases.
